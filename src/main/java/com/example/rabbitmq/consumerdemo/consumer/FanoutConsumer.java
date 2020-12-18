@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class FanoutConsumer {
     
-    @RabbitListener(queues = "firstFanout")
+    @RabbitListener(queues = "${queue.fanout.first}")
     @RabbitHandler
     public void receiveFirstFanoutQueueMessage(String firstFanoutQueueMessage) {
         log.info("This is firstFanoutQueue received message: "+firstFanoutQueueMessage);
     }
     
-    @RabbitListener(queues = "secondFanout")
+    @RabbitListener(queues = "${queue.fanout.second}")
     @RabbitHandler
     public void receiveSecondFanoutQueueMessage(String secondFanoutQueueMessage) {
         log.info("This is secondFanoutQueue received message: "+secondFanoutQueueMessage);

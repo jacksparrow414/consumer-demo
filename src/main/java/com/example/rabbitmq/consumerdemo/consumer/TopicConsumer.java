@@ -13,19 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class TopicConsumer {
 
-    @RabbitListener(queues = "firstTopic")
+    @RabbitListener(queues = "${queue.topic.first}")
     @RabbitHandler
     public void receiveFirstTopicQueueMessage(String firstTopicQueueMessage) {
         log.info("This is firstTopicQueue received message: " + firstTopicQueueMessage);
     }
 
-    @RabbitListener(queues = "secondTopic")
+    @RabbitListener(queues = "${queue.topic.second}")
     @RabbitHandler
     public void receiveSecondTopicQueueMessage(String secondTopicQueueMessage) {
         log.info("This is secondTopicQueue received message: " + secondTopicQueueMessage);
     }
 
-    @RabbitListener(queues = "thirdTopic")
+    @RabbitListener(queues = "${queue.topic.third}")
     @RabbitHandler
     public void receiveThirdTopicQueueMessage(String thirdTopicQueueMessage) {
         log.info("This is thirdTopicQueue received message: " + thirdTopicQueueMessage);

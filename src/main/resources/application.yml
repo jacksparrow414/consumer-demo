@@ -11,3 +11,11 @@ queue:
   direct:
     first: firstDirect
     second: secondDirect
+  fairDispatch: fairDispatch
+  fanout:
+    first: firstFanout
+    second: secondFanout
+  topic:
+    first: firstTopic
+    second: secondTopic
+    third: thirdTopic

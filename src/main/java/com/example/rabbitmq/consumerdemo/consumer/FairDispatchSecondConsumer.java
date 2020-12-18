@@ -1,11 +1,12 @@
 package com.example.rabbitmq.rabbitmqdemo.consumer;
 
-import java.util.concurrent.TimeUnit;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 公平派发的第二个消费者.
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-@RabbitListener(queues = "fairDispatch")
+@RabbitListener(queues = "${queue.fairDispatch}")
 public class FairDispatchSecondConsumer {
 
     private static final String SECOND_CONSUMER = "My name is second-fair-dispatch, I receive a message is: ";

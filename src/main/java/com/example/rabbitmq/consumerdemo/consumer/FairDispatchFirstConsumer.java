@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-@RabbitListener(queues = "fairDispatch")
+@RabbitListener(queues = "${queue.fairDispatch}")
 public class FairDispatchFirstConsumer {
     
     private static final String FIRST_CONSUMER = "My name is first-fair-dispatch, I receive a message is: ";
