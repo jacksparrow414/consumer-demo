@@ -7,7 +7,6 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.PooledChannelConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,9 +45,6 @@ public class RabbitMqConfig {
                 pool.setMaxTotal(15);
             }
         });
-        result.addConnectionListener(connection -> {
-        
-        });
         return result;
     }
 
@@ -69,7 +65,6 @@ public class RabbitMqConfig {
     @Bean
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate result = new RabbitTemplate(connectionFactory());
-        result.setMessageConverter(new Jackson2JsonMessageConverter());
         return result;
     }
     
@@ -78,7 +73,8 @@ public class RabbitMqConfig {
         SimpleRabbitListenerContainerFactory result = new SimpleRabbitListenerContainerFactory();
         result.setConnectionFactory(connectionFactory());
         result.setPrefetchCount(2);
-        result.setMessageConverter(new Jackson2JsonMessageConverter());
+        // 这里根据实际情况来配置是否开启全局消息手动确认
+//        result.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         return result;
     }
 }
