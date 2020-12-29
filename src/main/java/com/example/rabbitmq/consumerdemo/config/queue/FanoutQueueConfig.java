@@ -1,7 +1,7 @@
 package com.example.rabbitmq.consumerdemo.config.queue;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.example.rabbitmq.rabbitmqdemo.config.exchange.FanoutExchangeConfig;
+import com.example.rabbitmq.rabbitmqdemo.config.outer.exchange.FanoutExchangeConfig;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
  * @date 2020/12/17
  */
 @Configuration
-@Import(FanoutExchangeConfig.class)
+@Import( FanoutExchangeConfig.class)
 public class FanoutQueueConfig {
     
     @Bean

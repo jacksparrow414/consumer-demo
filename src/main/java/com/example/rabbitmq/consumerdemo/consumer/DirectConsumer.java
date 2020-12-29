@@ -1,11 +1,10 @@
 package com.example.rabbitmq.consumerdemo.consumer;
 
+import com.example.rabbitmq.rabbitmqdemo.config.outer.entity.SimpleDirectEntity;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.annotation.Exchange;
-import org.springframework.amqp.rabbit.annotation.Queue;
-import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,5 +25,11 @@ public class DirectConsumer {
     @RabbitHandler
     public void  receiveSecondDirectQueueMessage(String secondQueueMessage) {
         log.info("This is secondDirectQueue received message: " + secondQueueMessage);
+    }
+    
+    @RabbitListener(queues = "${queue.direct.pojo}" )
+    @RabbitHandler
+    public void receiveSimplePoJoQueueMessage(@Payload SimpleDirectEntity simpleDirectEntity) {
+        log.info("接收到的POJO为:{}", simpleDirectEntity);
     }
 }

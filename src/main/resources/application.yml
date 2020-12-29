@@ -11,6 +11,7 @@ queue:
   direct:
     first: firstDirect
     second: secondDirect
+    pojo: pojoDirect
   fairDispatch: fairDispatch
   fanout:
     first: firstFanout

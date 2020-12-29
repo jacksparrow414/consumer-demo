@@ -1,7 +1,7 @@
 package com.example.rabbitmq.consumerdemo.config.queue;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.example.rabbitmq.rabbitmqdemo.config.exchange.TopicExchangeConfig;
+import com.example.rabbitmq.rabbitmqdemo.config.outer.exchange.TopicExchangeConfig;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;

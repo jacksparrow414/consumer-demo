@@ -1,7 +1,7 @@
 package com.example.rabbitmq.consumerdemo.config.queue;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.example.rabbitmq.rabbitmqdemo.config.exchange.DirectExchangeConfig;
+import com.example.rabbitmq.rabbitmqdemo.config.outer.exchange.DirectExchangeConfig;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
@@ -29,6 +29,14 @@ public class DirectQueueConfig {
     }
     
     @Bean
+    public Queue simpleStringConvertQueue() {return new Queue("stringConvertDirect"); }
+    
+    @Bean
+    public Queue simplePoJoQueue() {
+        return new Queue("pojoDirect");
+    }
+    
+    @Bean
     public Binding firstDirectBinding() {
         return BindingBuilder.bind(firstDirectQueue()).to(SpringUtil.getBean(DirectExchange.class)).with("first");
     }
@@ -36,5 +44,15 @@ public class DirectQueueConfig {
     @Bean
     public Binding secondDirectBinding() {
         return BindingBuilder.bind(secondDirectQueue()).to(SpringUtil.getBean(DirectExchange.class)).with("second");
+    }
+    
+    @Bean
+    public Binding simpleStringConvertBinding() {
+        return BindingBuilder.bind(simpleStringConvertQueue()).to(SpringUtil.getBean(DirectExchange.class)).with("str");
+    }
+    
+    @Bean
+    public Binding simplePoJoBinding() {
+        return BindingBuilder.bind(simplePoJoQueue()).to(SpringUtil.getBean(DirectExchange.class)).with("pojo");
     }
 }
