@@ -20,3 +20,5 @@ queue:
     first: firstTopic
     second: secondTopic
     third: thirdTopic
+  delay:
+    delay: delay

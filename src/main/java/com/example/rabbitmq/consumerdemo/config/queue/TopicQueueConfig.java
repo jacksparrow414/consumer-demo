@@ -54,6 +54,6 @@ public class TopicQueueConfig {
     }
     
     private TopicExchange getTopicExchange() {
-       return SpringUtil.getBean(TopicExchange.class);
+       return SpringUtil.getBean("topicExchange");
     }
 }
